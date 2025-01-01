@@ -1,0 +1,568 @@
+/* import font vazirmatn from google fonts */
+/* @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap'); */
+
+@font-face {
+    font-family: Parastoo;
+    src: url('/fonts/web/Parastoo.eot');
+    src: url('/fonts/web/Parastoo.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/web/Parastoo.woff2') format('woff2'),
+         url('/fonts/web/Parastoo.woff') format('woff'),
+         url('/fonts/web/Parastoo.ttf') format('truetype');
+    font-weight: normal;
+}
+  
+@font-face {
+    font-family: Parastoo-bold;
+    src: url('/fonts/web/Parastoo-Bold.eot');
+    src: url('/fonts/web/Parastoo-Bold.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/web/Parastoo-Bold.woff2') format('woff2'),
+         url('/fonts/web/Parastoo-Bold.woff') format('woff'),
+         url('/fonts/web/Parastoo-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    /* font-family: Vazirmatn; */
+    font-family: parastoo;
+    font-weight: 500;
+}
+
+* {
+    font-size: 18px;
+    box-sizing: border-box;
+}
+
+button {
+    background: none;      /* Remove background */
+    border: none;          /* Remove border */
+    padding: 0;            /* Remove padding */
+    font: inherit;         /* Inherit font properties */
+    color: inherit;        /* Inherit text color */
+    cursor: pointer;       /* Ensure it still looks clickable */
+}
+
+/* container of all elements. top bar middle bar and boxes */
+.exercise__container {
+    max-width: 800px;
+    min-width: 310px;
+    /* border: 2px solid black; */
+    border-radius: 32px;
+    margin: 4px 8px;
+}
+
+
+/* removing default property settings */
+ul,
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    /* color: inherit; */
+}
+
+
+/* Row 1 : dokme ghabli va badi */
+.prev-next-container {
+    box-sizing: border-box;
+    height: 48px;
+    border-radius: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+.btn--exercise-prev,
+.btn--exercise-next {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    flex-basis: 120px;
+    margin: 0 0px;
+    padding: 8px 16px;
+    border: 2px solid black;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
+
+/* Row 2 : shomaare soal va tag haa */
+.number-tags-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    height: 48px;
+    min-width: 285px;
+    margin: 8px 0;
+    border: 2px solid black;
+    border-left: none;
+    border-radius: 170px;
+    position: relative;
+}
+
+.exercise__number {
+    box-sizing: border-box;
+    padding: 0px 16px 0px 8px;
+    position: absolute;
+    right: 0px;
+}
+
+.tags-container {
+    max-width: 120px;
+    transition: max-width 0.3s;
+    overflow: hidden;
+}
+
+.tags-container:hover {
+    max-width: 100%;
+}
+
+.tags-list,
+.tags-list * {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 1;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.tags-list {
+    height: 48px;
+    border: 2px solid black;
+    border-radius: 28px;
+}
+
+.horizontally-scrollable {
+    overflow: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer 10+ */
+}
+
+.tag {
+    justify-content: center;
+    background-color: black;
+    color: white;
+    height: 36px;
+    padding: 4px 16px;
+    margin: 0 4px;
+    border-radius: 28px;
+    font-size: 16px;
+    /* font-weight: bold; */
+}
+
+.tag:hover {
+    background-color: #353535;
+}
+
+.first-tag {
+    width: 108px;
+}
+
+.tags {
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-width 0.3s ease; /* Combine transitions */
+}
+
+.tags-container:hover .tags {
+    max-width: 100%; /* Adjust this value as needed */
+    opacity: 1;
+}
+
+/* Row 3 : Question-Box */
+.exercise__question-box {
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 16px;
+    padding: 8px 16px;
+    line-height: 1.6;
+    text-align: justify;
+    position: relative;
+    transition: border-radius 0.3s ease;
+    /* font-family: Arial, sans-serif; */
+}
+
+.open .exercise__question-box {
+    border-radius: 16px 16px 16px 6px;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.options li {
+    margin: 10px 0;
+}
+
+.inputBtns {
+    list-style-type: none;
+    padding: 0;
+}
+
+.inputBtns li {
+    margin: 10px 0;
+}
+
+/* Question-Box__Tooltips */
+.tooltips-position {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.tooltips-list {
+    z-index: 2;
+    overflow: hidden;
+    position: relative;
+    width: 250px;
+    height: 120px;
+    margin-bottom: 10px;
+}
+
+.tooltip {
+    border-radius: 16px 4px 16px 4px;
+    color: #fff;
+    width: 165px;
+    padding: 8px 8px 8px 8px;
+    margin-left: 8px;
+    text-align: center;
+    left: -100%;
+    transition: left 0.3s ease;
+}
+
+.tooltip span {
+    margin-right: 8px;
+}
+
+.pop-in {
+    left: 0;
+}
+
+.tooltip--correct {
+    background-color: #4caf50;
+}
+
+.tooltip--incorrect {
+    background-color: #f44336;
+}
+
+.tooltip--like {
+    background-color: #ff69b4;
+}
+
+.tooltip--star {
+    background-color: #ffd700;
+    color: black;
+}
+
+.tooltip--report {
+    background-color: #ff8c00;
+}
+
+ul.tooltips-list li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .icon svg {
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+} */
+
+
+/* Row 4 : Middle Row : answerToggle-authorLink-userInputs */
+.middle-bar {
+    width: 100%;
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+    margin: 8px 0;
+    font-size: 20px;
+}
+
+.toggle-author-container,
+.tags-inputBtns-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    width: 340px;
+    height: 64px;
+    margin: 4px 0px;
+    border: 2px solid black;
+    border-radius: 150px;
+    transition: border-radius 0.3s;
+}
+@media screen and (max-width: 735px) {
+
+    .toggle-author-container,
+    .tags-inputBtns-container {
+        width: 100%;
+    }
+}
+
+.open .toggle-author-container {
+    border-radius: 150px 150px 25px 150px;
+}
+
+.open .toggle-answer {
+    border-radius: 150px 150px 25px 150px;
+}
+
+.open .tags-inputBtns-container {
+    border-radius: 25px 150px 150px 150px;
+}
+
+/* Rightside of Middle Row : inside of toggle-author-container */
+.toggle-answer {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: 95.6%;
+    height: 48px;
+    margin: 0 2.2%;
+    /* border: 6px double white; */
+    border: 2px solid black;
+    border-radius: 193px;
+    background-color: black;
+    align-content: center;
+    color: white;
+    /* font-weight: bold; */
+    text-align: center;
+    text-wrap: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    transition: width 0.5s, border-radius 0.5s;
+    /* transition: width 0.3, border-radius 0.3s; */
+}
+
+.open .toggle-answer {
+    width: 110px;
+}
+
+.toggle-answer::before {
+    content: "مشاهده پاسخ تشریحی";
+}
+
+.open .toggle-answer::before {
+    content: "بستن پاسخ";
+}
+
+
+.author-link {
+    flex-shrink: 0;
+    width: 190px;
+    height: 48px;
+    padding-right: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+@media screen and (max-width: 735px) {
+    .author-link {
+        width: 100%;
+    }
+}
+
+.author-link svg {
+    margin-left: 4px;
+}
+
+/* Leftside of Middle Row : inside of exercise-tag-container */
+.exercise-tags {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: 95.6%;
+    height: 48px;
+    margin: 0 2.2%;
+    /* border: 6px double white; */
+    border: 2px solid black;
+    border-radius: 193px;
+    background-color: black;
+    align-content: center;
+    color: white;
+    /* font-weight: bold; */
+    text-align: center;
+    position: relative;
+    left: 0;
+    transition: left 0.5s;
+}
+
+.open .exercise-tags {
+    left: 100%;
+}
+
+.exercise-inputBtns {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    width: 340px;
+    position: relative;
+    left: 0;
+    transition: left 0.5s;
+}
+@media screen and (max-width: 735px) {
+    .exercise-inputBtns {
+        width: 100%;
+    }
+}
+
+.open .exercise-inputBtns {
+    left: 100%;
+}
+
+
+/* exercise option buttons */
+.btn--inputs {
+    width: 48px;
+    height: 48px;
+    /* border: 2px solid black; */
+    border-radius: 24px;
+    margin: 8px 4px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    /* font-size: 20px; */
+}
+
+.btn--inputs:hover {
+    transform: scale(1.1);  /* Slightly enlarge on hover */
+}
+
+
+/* Row 5 : Answer Box */
+.exercise__answer-box {
+    border: 2px solid black;
+    /* border-bottom: none; */
+    border-radius: 16px 6px 30px 30px;
+    margin-bottom: 16px;
+    /* padding: 8px 16px; */
+    /* font-family: Arial, sans-serif; */
+    line-height: 1.6;
+    text-align: justify;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.open .exercise__answer-box {
+    max-height: 100%;
+    opacity: 1;
+}
+
+.answer-description {
+    padding: 8px 16px;
+
+}
+
+h2 {
+    color: #333;
+    font-size: 24px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+.option {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Row 6 : References */
+.ref-list * {
+    display: flex;
+}
+
+.ref-list {
+    margin-top: 8px;
+}
+
+.ref-book {
+  background-color: black;
+  border: 6px double white;
+  border-radius: 36px;
+  box-sizing: border-box;
+  /* height: 64px; */
+}
+
+.book {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* background-color: black; */
+  color: white;
+  padding: 0 20px 0 10px;
+  font-weight: bold;
+}
+
+.pages {
+  /* border-bottom: 2px solid black; */
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  border-radius: 48px;
+  padding: 0 4px;
+  box-sizing: border-box;
+  height: 48px;
+  width: 100%;
+  /* position: relative;
+  top: -4px;
+  left: -16px; */
+}
+
+.horizontally-scrollable {
+  overflow: auto;
+  white-space: nowrap;
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer 10+ */
+}
+
+.page {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  margin: 2px 4px 0 4px;
+  flex-shrink: 0;
+}
+
+.page:hover {
+  background-color: #333;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
