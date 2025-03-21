@@ -447,11 +447,17 @@
 
       .container {
         /* border: 2px solid black; */
-        max-width: 856px;
-        min-width: 310px;
-        max-height: 100%;
-        width: 856px;
-      }
+    min-width: 315px;
+    max-width: 840px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        flex-direction: column-reverse;
+    }
+}
 
       /* Row 1 : tab btns */
       .tabs-nav {
